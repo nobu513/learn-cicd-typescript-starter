@@ -1,6 +1,6 @@
-name: ci 
+name: ci
 
-on: 
+on:
   pull_request:
     branches: [main]
 
@@ -15,11 +15,30 @@ jobs:
 
       - name: Set up Node
         uses: actions/setup-node@v4
-        with: 
+        with:
           node-version: 24
 
-      - name: npm ci
+      - name: Install dependencies
         run: npm ci
 
-      - name: npm run test
-        run: npm run test -- --coverage
+      - name: Run tests
+        run: npm run test
+
+  style:
+    name: Style
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check formatting
+        run: npm run format:check
