@@ -21,5 +21,5 @@ jobs:
       - name: npm ci
         run: npm install
 
-      - name: Run Vitest
+      - name: npm run test
         run: npm run test 
