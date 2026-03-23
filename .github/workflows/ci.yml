@@ -18,6 +18,8 @@ jobs:
         with: 
           node-version: 22
 
-      - name: print npm version
-        run: npm --version 
+      - name: Install dependencies
+        run: npm install
 
+      - name: Run Vitest
+        run: npm run test 
