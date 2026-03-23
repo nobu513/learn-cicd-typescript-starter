@@ -1,4 +1,4 @@
-nmae: cd
+name: cd
 
 on:
   push:
@@ -8,18 +8,19 @@ on:
 jobs:
   deploy:
     name: Deploy
+    runs-on: ubuntu-latest
 
     steps:
       - name: Check out code
         uses: actions/checkout@v4
-  
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 24
 
       - name: Install dependencies
-        run: npm ci 
+        run: npm install -g npm@latest && npm ci
 
       - name: Build
         run: npm run build
